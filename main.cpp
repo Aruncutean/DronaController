@@ -2,22 +2,9 @@
 #include <string>
 #include <sstream>
 #include <RadioLib.h>
-#include "PiHal.h"
-
-PiHal *hal = new PiHal(0);
-
-// NSS pin:   25
-// DIO1 pin:  4
-// NRST pin:  17
-// BUSY pin:  27 //nu se foloseste nu merge rcv-ul pentru RFM95
-RFM95 radio0 = new Module(hal, 25, 4, 17);
-
-// NSS pin:   12
-// DIO1 pin:  5
-// NRST pin:  13
-// BUSY pin:  6
-SX1280 radio1 = new Module(hal, 12, 5, 13, 6);
-
+#include "include/PiHal.h"
+#include "include/Serial.h"
+#include "include/Msp.h"
 template <typename T>
 void send(T radio, std::string message);
 
@@ -32,6 +19,18 @@ int main(int argc, char **argv)
     fprintf(stderr, "Nu s-a putut inițializa pigpio\n");
     return 1;
   }
+  PiHal *hal = new PiHal(0);
+  // NSS pin:   25
+  // DIO1 pin:  4
+  // NRST pin:  17
+  // BUSY pin:  27 //nu se foloseste nu merge rcv-ul pentru RFM95
+  RFM95 radio0 = new Module(hal, 25, 4, 17);
+
+  // NSS pin:   12
+  // DIO1 pin:  5
+  // NRST pin:  13
+  // BUSY pin:  6
+  SX1280 radio1 = new Module(hal, 12, 5, 13, 6);
   printf("[RFM95] Initializing ... ");
   int state = radio0.begin(868.0);
   if (state != RADIOLIB_ERR_NONE)
@@ -51,9 +50,30 @@ int main(int argc, char **argv)
   }
   printf("success!\n");
 
+  Msp msp("serial0", 115200);
+
   for (;;)
   {
-    recv(radio0);
+    msp.sendMSPRequest(MSP_MODE_RANGES);
+    try
+    {
+      msp.procesareMessage(msp.readMSPResponse());
+    }
+    catch (const std::exception &e)
+    {
+      std::cerr << e.what() << '\n';
+    }
+    hal->delay(100);
+    msp.sendMSPRequest(MSP_STATUS);
+    try
+    {
+      msp.procesareMessage(msp.readMSPResponse());
+    }
+    catch (const std::exception &e)
+    {
+      std::cerr << e.what() << '\n';
+    }
+    //  recv(radio0);
   }
   return (0);
 }

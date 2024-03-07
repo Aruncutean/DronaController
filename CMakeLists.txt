@@ -16,7 +16,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 include_directories(/usr/local/include)
 
 # include the WiringPi headers
-include_directories(${WIRINGPI_INCLUDE_DIRS})
+include_directories(${WIRINGPI_INCLUDE_DIRS} ${WIRINGPI_INCLUDE_DIRS}/src/*.cpp ${WIRINGPI_INCLUDE_DIRS}/include/*.h *.cpp *.h)
 
 # link both libraries
 target_link_libraries(${PROJECT_NAME} RadioLib pigpio  /usr/local/lib/libwiringPi.so)

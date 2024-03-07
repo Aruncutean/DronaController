@@ -1,20 +1,12 @@
 #ifndef PI_HAL_H
 #define PI_HAL_H
 
-// include RadioLib
 #include <RadioLib.h>
-
-// include the library for Raspberry GPIO pins
 #include "pigpio.h"
 
-// create a new Raspberry Pi hardware abstraction layer
-// using the pigpio library
-// the HAL must inherit from the base RadioLibHal class
-// and implement all of its virtual methods
 class PiHal : public RadioLibHal
 {
 public:
-  // default constructor - initializes the base HAL and any needed private members
   PiHal(uint8_t spiChannel, uint32_t spiSpeed = 2000000)
       : RadioLibHal(PI_INPUT, PI_OUTPUT, PI_LOW, PI_HIGH, RISING_EDGE, FALLING_EDGE),
         _spiChannel(spiChannel),
@@ -24,18 +16,13 @@ public:
 
   void init() override
   {
-    // first initialise pigpio library
     if (gpioInitialise() < 0)
     {
-      // Inițializarea a eșuat
       fprintf(stderr, "Nu s-a putut inițializa pigpio\n");
     }
     else
     {
-      // now the SPI
       spiBegin();
-
-      // Waveshare LoRaWAN Hat also needs pin 18 to be pulled high to enable the radio
       gpioSetMode(18, PI_OUTPUT);
       gpioWrite(18, PI_HIGH);
     }
@@ -43,26 +30,18 @@ public:
 
   void term() override
   {
-    // stop the SPI
     spiEnd();
-
-    // pull the enable pin low
     gpioSetMode(18, PI_OUTPUT);
     gpioWrite(18, PI_LOW);
-
-    // finally, stop the pigpio library
     gpioTerminate();
   }
 
-  // GPIO-related methods (pinMode, digitalWrite etc.) should check
-  // RADIOLIB_NC as an alias for non-connected pins
   void pinMode(uint32_t pin, uint32_t mode) override
   {
     if (pin == RADIOLIB_NC)
     {
       return;
     }
-
     gpioSetMode(pin, mode);
   }
 
@@ -72,7 +51,6 @@ public:
     {
       return;
     }
-
     gpioWrite(pin, value);
   }
 
@@ -175,7 +153,6 @@ public:
   }
 
 private:
-  // the HAL can contain any additional private members
   const unsigned int _spiSpeed;
   const uint8_t _spiChannel;
   int _spiHandle = -1;
