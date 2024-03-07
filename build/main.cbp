@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="main"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\..\;CMake Files\..\lib\;CMake Files\..\lib\RadioLib\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main">
+				<Option output="/home/raul/testFile/build/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/raul/lib/RadioLib/src"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/arm-linux-gnueabihf/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 main"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="main/fast">
+				<Option output="/home/raul/testFile/build/main" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/raul/testFile/build"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/raul/lib/RadioLib/src"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/arm-linux-gnueabihf/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 main/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RadioLib">
+				<Option output="/home/raul/testFile/build/RadioLib/libRadioLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/raul/testFile/build/RadioLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/raul/lib/RadioLib/src"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/arm-linux-gnueabihf/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 RadioLib"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="RadioLib/fast">
+				<Option output="/home/raul/testFile/build/RadioLib/libRadioLib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/raul/testFile/build/RadioLib"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/raul/lib/RadioLib/src"/>
+					<Add directory="/usr/include/c++/10"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf/c++/10"/>
+					<Add directory="/usr/include/c++/10/backward"/>
+					<Add directory="/usr/lib/gcc/arm-linux-gnueabihf/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/arm-linux-gnueabihf"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 RadioLib/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/raul/testFile/build/RadioLib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/raul/lib/RadioLib/src/ArduinoHal.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/ArduinoHal.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/Hal.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/Hal.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/Module.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/Module.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/CC1101/CC1101.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/CC1101/CC1101.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/LLCC68/LLCC68.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/LLCC68/LLCC68.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/RF69/RF69.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/RF69/RF69.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX123x/SX1231.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX123x/SX1231.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX123x/SX1233.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX123x/SX1233.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/STM32WLx.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/STM32WLx.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/STM32WLx_Module.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/STM32WLx_Module.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1261.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1261.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1262.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1262.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1268.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX1268.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX126x.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX126x/SX126x.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1272.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1272.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1273.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1273.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1276.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1276.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1277.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1277.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1278.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1278.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1279.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX1279.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX127x.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX127x/SX127x.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1280.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1280.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1281.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1281.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1282.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX1282.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX128x.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/SX128x/SX128x.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4430.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4430.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4431.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4431.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4432.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si4432.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si443x.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/Si443x/Si443x.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/nRF24/nRF24.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/modules/nRF24/nRF24.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/AFSK/AFSK.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/AFSK/AFSK.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/APRS/APRS.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/APRS/APRS.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/AX25/AX25.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/AX25/AX25.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/BellModem/BellModem.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/BellModem/BellModem.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/ExternalRadio/ExternalRadio.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/ExternalRadio/ExternalRadio.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/FSK4/FSK4.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/FSK4/FSK4.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Hellschreiber/Hellschreiber.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Hellschreiber/Hellschreiber.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/LoRaWAN/LoRaWAN.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/LoRaWAN/LoRaWAN.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/LoRaWAN/LoRaWANBands.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Morse/Morse.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Morse/Morse.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Pager/Pager.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Pager/Pager.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/PhysicalLayer/PhysicalLayer.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/PhysicalLayer/PhysicalLayer.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Print/ITA2String.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Print/ITA2String.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Print/Print.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/Print/Print.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/RTTY/RTTY.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/RTTY/RTTY.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/SSTV/SSTV.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/protocols/SSTV/SSTV.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/CRC.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/CRC.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/Cryptography.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/Cryptography.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/FEC.cpp">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/lib/RadioLib/src/utils/FEC.h">
+			<Option target="RadioLib"/>
+		</Unit>
+		<Unit filename="/home/raul/testFile/main.cpp">
+			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/raul/testFile/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/raul/testFile/../lib/RadioLib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\..\lib\RadioLib\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

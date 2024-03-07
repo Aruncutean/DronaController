@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/rpi-sx1261.dir/main.cpp.o -o rpi-sx1261  RadioLib/libRadioLib.a -lpigpio 
