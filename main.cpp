@@ -73,6 +73,17 @@ int main(int argc, char **argv)
     {
       std::cerr << e.what() << '\n';
     }
+    
+    msp.sendMSPRequest(MSP_RX);
+    try
+    {
+      msp.procesareMessage(msp.readMSPResponse());
+    }
+    catch (const std::exception &e)
+    {
+      std::cerr << e.what() << '\n';
+    }
+
     //  recv(radio0);
   }
   return (0);

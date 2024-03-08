@@ -11,6 +11,7 @@
 #include <errno.h>
 #include <vector>
 #include "MspType.h"
+#include "DataController.h"
 
 struct MSPMessage
 {
@@ -20,7 +21,8 @@ struct MSPMessage
     uint8_t checksum;
 };
 
-struct FlightMode {
+struct FlightMode
+{
     uint8_t permanentId;
     uint8_t auxChannelIndex;
     uint8_t rangeStartStep;
@@ -144,6 +146,11 @@ public:
         return mspMsg;
     }
 
+    int mapValue(int x)
+    {
+        return x * (1000 / 45) + 1000;
+    }
+
     void procesareMessage(MSPMessage mspMessage)
     {
 
@@ -180,9 +187,16 @@ public:
                 if (!isModeEmpty)
                 {
                     std::cout << "Mode ID: " << static_cast<int>(mode.permanentId)
-                              << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex)
-                              << ", Range: " << static_cast<int>(mode.rangeStartStep)
-                              << " - " << static_cast<int>(mode.rangeEndStep) << std::endl;
+                              << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex) + 5
+                              << ", Range: " << mapValue(static_cast<int>(mode.rangeStartStep))
+                              << " - " << mapValue(static_cast<int>(mode.rangeEndStep)) << std::endl;
+
+                    mode::Mode modeS;
+                    modeS.id = static_cast<int>(mode.permanentId);
+                    modeS.auxChannel = static_cast<int>(mode.auxChannelIndex) + 5;
+                    modeS.minRange = mapValue(static_cast<int>(mode.rangeStartStep));
+                    modeS.maxRange = mapValue(static_cast<int>(mode.rangeEndStep));
+                    DataController::getInstance().addMode(modeS);
                 }
             }
 
@@ -192,10 +206,15 @@ public:
         {
             std::cout << "105" << std::endl;
             std::cout << "RX Channels: ";
+            std::vector<channel::Channel> channel;
             for (size_t i = 0; i < mspMessage.payload.size() - 1; i += 2)
             {
                 uint16_t channelValue = mspMessage.payload.at(i) | (mspMessage.payload.at(i + 1) << 8);
+
                 std::cout << channelValue << " ";
+                     for (size_t j = 0; j < DataController::getInstance().getMode().size(); j ++) {
+        
+     }
             }
             std::cout << std::endl;
             break;
@@ -205,47 +224,81 @@ public:
         }
     }
 
-    const uint16_t SENSOR_ACC = 0x01;          // 0000 0001
-    const uint16_t SENSOR_BARO = 0x02;         // 0000 0010
-    const uint16_t SENSOR_MAG = 0x04;          // 0000 0100
-    const uint16_t SENSOR_GPS = 0x08;          // 0000 1000
-    const uint16_t SENSOR_SONAR = 0x10;        // 0001 0000
-    const uint16_t SENSOR_LIDAR = 0x20;        // 0100 0000
-    const uint16_t SENSOR_OPTICAL_FLOW = 0x40; // 1000 0000
-
     void checkSensors(uint16_t sensorFlags)
     {
-        std::bitset<16> binaryFlags(sensorFlags);
 
-        std::cout << "Flag-uri senzori în format binar: " << binaryFlags << std::endl;
-        std::cout << "Sensoare active: ";
+        const uint16_t SENSOR_ACC = 0x01;          // 0000 0001
+        const uint16_t SENSOR_BARO = 0x02;         // 0000 0010
+        const uint16_t SENSOR_MAG = 0x04;          // 0000 0100
+        const uint16_t SENSOR_GPS = 0x08;          // 0000 1000
+        const uint16_t SENSOR_SONAR = 0x10;        // 0001 0000
+        const uint16_t SENSOR_LIDAR = 0x20;        // 0100 0000
+        const uint16_t SENSOR_OPTICAL_FLOW = 0x40; // 1000 0000
+
+        std::bitset<16> binaryFlags(sensorFlags);
+        DataController::getInstance().setSenzorIsActive(senzor::SenzorType::gyro, true);
         if (sensorFlags & SENSOR_ACC)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::accel, true);
             std::cout << "Accelerometru ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::accel, false);
         }
         if (sensorFlags & SENSOR_BARO)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::baro, true);
             std::cout << "Barometru ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::baro, false);
         }
         if (sensorFlags & SENSOR_MAG)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::mag, true);
             std::cout << "Magnetometru ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::mag, false);
         }
         if (sensorFlags & SENSOR_GPS)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::gps, true);
             std::cout << "GPS ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::gps, false);
         }
         if (sensorFlags & SENSOR_SONAR)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::sonar, true);
             std::cout << "Sonar ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::sonar, false);
         }
         if (sensorFlags & SENSOR_LIDAR)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::speed, true);
             std::cout << "Lidar ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::speed, false);
         }
         if (sensorFlags & SENSOR_OPTICAL_FLOW)
         {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::flow, true);
             std::cout << "Flux optic ";
+        }
+        else
+        {
+            DataController::getInstance().setSenzorIsActive(senzor::SenzorType::flow, false);
         }
         std::cout << std::endl;
     }
@@ -308,7 +361,7 @@ public:
     std::vector<FlightMode> extractFlightModes(const std::vector<uint8_t> &payload)
     {
         std::vector<FlightMode> modes;
-        size_t numModes = payload.size() / 4; 
+        size_t numModes = payload.size() / 4;
         for (size_t i = 0; i < numModes; i++)
         {
             FlightMode mode;
