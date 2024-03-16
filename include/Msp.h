@@ -90,6 +90,36 @@ public:
         return c;
     }
 
+    void setMspRx(const std::vector<uint16_t> &channels)
+    {
+        std::vector<uint8_t> payload;
+
+        for (const auto &channel : channels)
+        {
+
+            payload.push_back(channel & 0xFF);
+            payload.push_back((channel >> 8) & 0xFF);
+        }
+
+        uint8_t checksum = 0;
+        checksum ^= MSP_SET_RX;
+        checksum ^= payload.size();
+        for (const auto &byte : payload)
+        {
+            checksum ^= byte;
+        }
+
+        // Construiește întregul mesaj MSP
+        std::vector<uint8_t> message = {'$', 'M', '<', static_cast<uint8_t>(payload.size()), static_cast<uint8_t>(MSP_SET_RX)};
+        message.insert(message.end(), payload.begin(), payload.end());
+        message.push_back(checksum);
+
+        for (int i = 0; i < message.size(); i++)
+        {
+            serialWrite(message.at(i));
+        }
+    }
+
     void sendMSPRequest(uint8_t mspCommand)
     {
         serialWrite(MSP_START_CHAR);
@@ -157,7 +187,7 @@ public:
         switch (mspMessage.cmd)
         {
         case 101:
-            std::cout << "101" << std::endl;
+            //    std::cout << "101" << std::endl;
             if (mspMessage.size >= 11)
             {
                 uint16_t cycleTime = mspMessage.payload.at(0) | (mspMessage.payload.at(1) << 8);
@@ -166,18 +196,18 @@ public:
                 uint32_t flightModeFlags = mspMessage.payload.at(6) | (mspMessage.payload.at(7) << 8) | (mspMessage.payload.at(8) << 16) | (mspMessage.payload.at(9) << 24);
                 uint8_t configProfileIndex = mspMessage.payload.at(10);
 
-                printf("Cycle Time: %d\n", cycleTime);
-                printf("I2C Error Counter: %d\n", i2cErrorCounter);
-                printf("Sensor: %d\n", sensor);
+                // printf("Cycle Time: %d\n", cycleTime);
+                //  printf("I2C Error Counter: %d\n", i2cErrorCounter);
+                //  printf("Sensor: %d\n", sensor);
                 checkSensors(sensor);
-                printf("Flight Mode Flags: %u\n", flightModeFlags);
-                checkFlightModes(flightModeFlags);
-                printf("Config Profile Index: %d\n", configProfileIndex);
+                // printf("Flight Mode Flags: %u\n", flightModeFlags);
+                //checkFlightModes(flightModeFlags);
+                // printf("Config Profile Index: %d\n", configProfileIndex);
             }
             break;
         case 34:
         {
-            std::cout << "34" << std::endl;
+            //  std::cout << "34" << std::endl;
 
             std::vector<FlightMode> modes = extractFlightModes(mspMessage.payload);
             for (const auto &mode : modes)
@@ -186,10 +216,10 @@ public:
                 bool isModeEmpty = (mode.permanentId == 0 && mode.auxChannelIndex == 0 && mode.rangeStartStep == 0 && mode.rangeEndStep == 0);
                 if (!isModeEmpty)
                 {
-                    std::cout << "Mode ID: " << static_cast<int>(mode.permanentId)
-                              << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex) + 5
-                              << ", Range: " << mapValue(static_cast<int>(mode.rangeStartStep))
-                              << " - " << mapValue(static_cast<int>(mode.rangeEndStep)) << std::endl;
+                    // std::cout << "Mode ID: " << static_cast<int>(mode.permanentId)
+                    //           << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex) + 5
+                    //           << ", Range: " << mapValue(static_cast<int>(mode.rangeStartStep))
+                    //           << " - " << mapValue(static_cast<int>(mode.rangeEndStep)) << std::endl;
 
                     mode::Mode modeS;
                     modeS.id = static_cast<int>(mode.permanentId);
@@ -204,17 +234,17 @@ public:
         }
         case 105:
         {
-            std::cout << "105" << std::endl;
-            std::cout << "RX Channels: ";
+        //    std::cout << "105" << std::endl;
+        //    std::cout << "RX Channels: ";
             std::vector<channel::Channel> channel;
             for (size_t i = 0; i < mspMessage.payload.size() - 1; i += 2)
             {
                 uint16_t channelValue = mspMessage.payload.at(i) | (mspMessage.payload.at(i + 1) << 8);
 
                 std::cout << channelValue << " ";
-                     for (size_t j = 0; j < DataController::getInstance().getMode().size(); j ++) {
-        
-     }
+                for (size_t j = 0; j < DataController::getInstance().getMode().size(); j++)
+                {
+                }
             }
             std::cout << std::endl;
             break;
@@ -240,7 +270,7 @@ public:
         if (sensorFlags & SENSOR_ACC)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::accel, true);
-            std::cout << "Accelerometru ";
+           // std::cout << "Accelerometru ";
         }
         else
         {
@@ -249,7 +279,7 @@ public:
         if (sensorFlags & SENSOR_BARO)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::baro, true);
-            std::cout << "Barometru ";
+          //  std::cout << "Barometru ";
         }
         else
         {
@@ -258,7 +288,7 @@ public:
         if (sensorFlags & SENSOR_MAG)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::mag, true);
-            std::cout << "Magnetometru ";
+            //std::cout << "Magnetometru ";
         }
         else
         {
@@ -267,7 +297,7 @@ public:
         if (sensorFlags & SENSOR_GPS)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::gps, true);
-            std::cout << "GPS ";
+          //  std::cout << "GPS ";
         }
         else
         {
@@ -276,7 +306,7 @@ public:
         if (sensorFlags & SENSOR_SONAR)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::sonar, true);
-            std::cout << "Sonar ";
+          //  std::cout << "Sonar ";
         }
         else
         {
@@ -285,7 +315,7 @@ public:
         if (sensorFlags & SENSOR_LIDAR)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::speed, true);
-            std::cout << "Lidar ";
+          //  std::cout << "Lidar ";
         }
         else
         {
@@ -294,13 +324,13 @@ public:
         if (sensorFlags & SENSOR_OPTICAL_FLOW)
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::flow, true);
-            std::cout << "Flux optic ";
+          //  std::cout << "Flux optic ";
         }
         else
         {
             DataController::getInstance().setSenzorIsActive(senzor::SenzorType::flow, false);
         }
-        std::cout << std::endl;
+       // std::cout << std::endl;
     }
 
     const uint32_t FLAG_ARMED = 1 << 0;         // 0000 0001
@@ -315,10 +345,10 @@ public:
 
     void checkFlightModes(uint32_t flags)
     {
-        std::cout << "Moduri de zbor active: ";
-        std::bitset<32> binaryFlags(flags);
+        // std::cout << "Moduri de zbor active: ";
+        // std::bitset<32> binaryFlags(flags);
 
-        std::cout << "format binar: " << binaryFlags << std::endl;
+        // std::cout << "format binar: " << binaryFlags << std::endl;
         if (flags & FLAG_ARMED)
         {
             std::cout << "Armed ";

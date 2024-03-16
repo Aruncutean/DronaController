@@ -7,3 +7,4 @@
 #define MSP_STATUS 101
 #define MSP_MODE_RANGES 34
 #define MSP_RX 105
+#define MSP_SET_RX 200

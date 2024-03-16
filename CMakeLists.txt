@@ -11,6 +11,7 @@ project(main)
 # the following is just an example, yours will likely be different
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../lib/RadioLib" "${CMAKE_CURRENT_BINARY_DIR}/RadioLib")
 
+
 # add the executable
 add_executable(${PROJECT_NAME} main.cpp)
 include_directories(/usr/local/include)
@@ -19,7 +20,7 @@ include_directories(/usr/local/include)
 include_directories(${WIRINGPI_INCLUDE_DIRS} ${WIRINGPI_INCLUDE_DIRS}/src/*.cpp ${WIRINGPI_INCLUDE_DIRS}/include/*.h *.cpp *.h)
 
 # link both libraries
-target_link_libraries(${PROJECT_NAME} RadioLib pigpio  /usr/local/lib/libwiringPi.so)
+target_link_libraries(${PROJECT_NAME} RadioLib pigpio  /usr/local/lib/libwiringPi.so nmea)
 
 # you can also specify RadioLib compile-time flags here
 #target_compile_definitions(${PROJECT_NAME} PUBLIC RADIOLIB_DEBUG RADIOLIB_VERBOSE)

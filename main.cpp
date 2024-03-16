@@ -5,6 +5,13 @@
 #include "include/PiHal.h"
 #include "include/Serial.h"
 #include "include/Msp.h"
+#include <gps.h>
+#include <nmea.h>
+#include <nmea/gpgll.h>
+#include <nmea/gpgsa.h>
+#include <nmea/gpvtg.h>
+#include <nmea/gptxt.h>
+#include <nmea/gpgsv.h>
 template <typename T>
 void send(T radio, std::string message);
 
@@ -54,6 +61,9 @@ int main(int argc, char **argv)
 
   for (;;)
   {
+
+    // Adaugă o mică pauză pentru a reduce utilizarea intensivă a CPU
+
     msp.sendMSPRequest(MSP_MODE_RANGES);
     try
     {
@@ -73,7 +83,7 @@ int main(int argc, char **argv)
     {
       std::cerr << e.what() << '\n';
     }
-    
+
     msp.sendMSPRequest(MSP_RX);
     try
     {
@@ -83,8 +93,8 @@ int main(int argc, char **argv)
     {
       std::cerr << e.what() << '\n';
     }
-
-    //  recv(radio0);
+    std::vector<uint16_t> channels = {1500, 1500, 1000, 1500, 1500, 1000, 1000, 1000}; // Valorile exemplu pentru canale
+    msp.setMspRx(channels);
   }
   return (0);
 }
