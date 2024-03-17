@@ -5,13 +5,7 @@
 #include "include/PiHal.h"
 #include "include/Serial.h"
 #include "include/Msp.h"
-#include <gps.h>
-#include <nmea.h>
-#include <nmea/gpgll.h>
-#include <nmea/gpgsa.h>
-#include <nmea/gpvtg.h>
-#include <nmea/gptxt.h>
-#include <nmea/gpgsv.h>
+
 template <typename T>
 void send(T radio, std::string message);
 
@@ -57,8 +51,8 @@ int main(int argc, char **argv)
   }
   printf("success!\n");
 
-  Msp msp("serial0", 115200);
-
+  Msp msp("ttyS0", 115200);
+ 
   for (;;)
   {
 
@@ -74,27 +68,27 @@ int main(int argc, char **argv)
       std::cerr << e.what() << '\n';
     }
     hal->delay(100);
-    msp.sendMSPRequest(MSP_STATUS);
-    try
-    {
-      msp.procesareMessage(msp.readMSPResponse());
-    }
-    catch (const std::exception &e)
-    {
-      std::cerr << e.what() << '\n';
-    }
+    // msp.sendMSPRequest(MSP_STATUS);
+    // try
+    // {
+    //   msp.procesareMessage(msp.readMSPResponse());
+    // }
+    // catch (const std::exception &e)
+    // {
+    //   std::cerr << e.what() << '\n';
+    // }
 
-    msp.sendMSPRequest(MSP_RX);
-    try
-    {
-      msp.procesareMessage(msp.readMSPResponse());
-    }
-    catch (const std::exception &e)
-    {
-      std::cerr << e.what() << '\n';
-    }
-    std::vector<uint16_t> channels = {1500, 1500, 1000, 1500, 1500, 1000, 1000, 1000}; // Valorile exemplu pentru canale
-    msp.setMspRx(channels);
+    // msp.sendMSPRequest(MSP_RX);
+    // try
+    // {
+    //   msp.procesareMessage(msp.readMSPResponse());
+    // }
+    // catch (const std::exception &e)
+    // {
+    //   std::cerr << e.what() << '\n';
+    // }
+    // std::vector<uint16_t> channels = {1500, 1500, 1000, 1500, 1500, 1000, 1000, 1000}; // Valorile exemplu pentru canale
+    // msp.setMspRx(channels);
   }
   return (0);
 }

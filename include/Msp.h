@@ -35,6 +35,12 @@ class Msp
 public:
     Msp(std::string chanel, int baud)
     {
+
+          if (gpioInitialise() < 0) {
+        // Inițializarea a eșuat
+        fprintf(stderr, "Nu s-a putut inițializa pigpio\n");
+      
+    }
         std::string ch = "/dev/" + chanel;
         char chArray[256];
         std::strcpy(chArray, ch.c_str());
@@ -47,7 +53,11 @@ public:
         else
         {
             std::cout << "serial open" << std::endl;
+        
+       
         }
+
+
     }
 
     void write(std::string msg)
@@ -139,10 +149,16 @@ public:
         uint8_t command = 0;
         uint8_t checksum = 0;
         uint8_t calculatedChecksum = 0;
+     
+        char c1 =readChar();
+        char c2=readChar();
+        char c3=readChar();
 
-        if (readChar() == MSP_START_CHAR &&
-            readChar() == MSP_IDENTIFICATOR &&
-            readChar() == MSP_RECV_CHAR)
+        std::cout<<c1 << c2 << c3<<std::endl;
+
+        if (c1 == MSP_START_CHAR &&
+            c2== MSP_IDENTIFICATOR &&
+            c3 == MSP_RECV_CHAR)
         {
             dataSize = readChar();
             calculatedChecksum ^= dataSize;
@@ -187,7 +203,7 @@ public:
         switch (mspMessage.cmd)
         {
         case 101:
-            //    std::cout << "101" << std::endl;
+                std::cout << "101" << std::endl;
             if (mspMessage.size >= 11)
             {
                 uint16_t cycleTime = mspMessage.payload.at(0) | (mspMessage.payload.at(1) << 8);
@@ -196,18 +212,18 @@ public:
                 uint32_t flightModeFlags = mspMessage.payload.at(6) | (mspMessage.payload.at(7) << 8) | (mspMessage.payload.at(8) << 16) | (mspMessage.payload.at(9) << 24);
                 uint8_t configProfileIndex = mspMessage.payload.at(10);
 
-                // printf("Cycle Time: %d\n", cycleTime);
-                //  printf("I2C Error Counter: %d\n", i2cErrorCounter);
-                //  printf("Sensor: %d\n", sensor);
+                 printf("Cycle Time: %d\n", cycleTime);
+                  printf("I2C Error Counter: %d\n", i2cErrorCounter);
+                  printf("Sensor: %d\n", sensor);
                 checkSensors(sensor);
-                // printf("Flight Mode Flags: %u\n", flightModeFlags);
-                //checkFlightModes(flightModeFlags);
-                // printf("Config Profile Index: %d\n", configProfileIndex);
+                 printf("Flight Mode Flags: %u\n", flightModeFlags);
+                checkFlightModes(flightModeFlags);
+             printf("Config Profile Index: %d\n", configProfileIndex);
             }
             break;
         case 34:
         {
-            //  std::cout << "34" << std::endl;
+              std::cout << "34" << std::endl;
 
             std::vector<FlightMode> modes = extractFlightModes(mspMessage.payload);
             for (const auto &mode : modes)
@@ -216,10 +232,10 @@ public:
                 bool isModeEmpty = (mode.permanentId == 0 && mode.auxChannelIndex == 0 && mode.rangeStartStep == 0 && mode.rangeEndStep == 0);
                 if (!isModeEmpty)
                 {
-                    // std::cout << "Mode ID: " << static_cast<int>(mode.permanentId)
-                    //           << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex) + 5
-                    //           << ", Range: " << mapValue(static_cast<int>(mode.rangeStartStep))
-                    //           << " - " << mapValue(static_cast<int>(mode.rangeEndStep)) << std::endl;
+                     std::cout << "Mode ID: " << static_cast<int>(mode.permanentId)
+                               << ", Aux Channel: " << static_cast<int>(mode.auxChannelIndex) + 5
+                               << ", Range: " << mapValue(static_cast<int>(mode.rangeStartStep))
+                               << " - " << mapValue(static_cast<int>(mode.rangeEndStep)) << std::endl;
 
                     mode::Mode modeS;
                     modeS.id = static_cast<int>(mode.permanentId);
@@ -234,8 +250,8 @@ public:
         }
         case 105:
         {
-        //    std::cout << "105" << std::endl;
-        //    std::cout << "RX Channels: ";
+           std::cout << "105" << std::endl;
+            std::cout << "RX Channels: ";
             std::vector<channel::Channel> channel;
             for (size_t i = 0; i < mspMessage.payload.size() - 1; i += 2)
             {
@@ -406,7 +422,7 @@ public:
     }
 
 private:
-    int baud = 9600;
+    int baud = 115200;
     int serialHandle;
 };
 

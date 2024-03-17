@@ -20,7 +20,7 @@ include_directories(/usr/local/include)
 include_directories(${WIRINGPI_INCLUDE_DIRS} ${WIRINGPI_INCLUDE_DIRS}/src/*.cpp ${WIRINGPI_INCLUDE_DIRS}/include/*.h *.cpp *.h)
 
 # link both libraries
-target_link_libraries(${PROJECT_NAME} RadioLib pigpio  /usr/local/lib/libwiringPi.so nmea)
+target_link_libraries(${PROJECT_NAME} RadioLib pigpio pthread rt)
 
 # you can also specify RadioLib compile-time flags here
 #target_compile_definitions(${PROJECT_NAME} PUBLIC RADIOLIB_DEBUG RADIOLIB_VERBOSE)
